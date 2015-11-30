@@ -1,0 +1,22 @@
+- var language = __('site.language')
+
+aside.sidebar
+  header
+    h1
+      p= __('site.author')
+      p
+        a(href=url_for(language))= __('site.blog_name')
+
+  nav.sidebar__post-list
+    each post in site.posts.find({lang: language}).sort('date', -1).data
+      p
+        a.sidebar__post-title(
+          id="#{post.slug}",
+          href="##{post.slug}",
+          title=post.subtitle)
+          = post.title
+        
+        if !_.isEmpty(post.hreflang)
+          each hreflang, index in post.hreflang
+            .sidebar__language-versions
+              a.sidebar__language-version(id="#{post.slug}/#{index}", title=site.data.languages.versions[index], href="##{post.slug}/#{index}")= index

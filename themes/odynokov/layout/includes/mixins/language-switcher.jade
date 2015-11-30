@@ -1,0 +1,16 @@
+mixin language-link(href, lang)
+  a.language-switcher__language(href=url_for(href))= site.data.languages[lang]
+
+mixin language-switcher
+  p.language-switcher
+
+    each available_language in theme.language
+      if page.hreflang && page.hreflang[available_language]
+        - var href=available_language + '/' + page.hreflang[available_language]
+        +language-link(href, available_language)
+    
+      else if available_language != language && available_language != 'default'
+        - var href = available_language
+        +language-link(href, available_language)
+      
+      

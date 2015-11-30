@@ -1,0 +1,8 @@
+<h1>Languages</h1>
+
+<% _(site.posts).forEach(function(post) { %>
+	<p>Title<%= post.title %></p>
+	<% if (post.lang === 'uk') { %>
+		<p>Title<%= post.title %></p>
+<%	} %>
+<% }) %>

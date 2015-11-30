@@ -1,0 +1,12 @@
+- var language = __('site.language')
+
+mixin post-pages
+  #fullpage
+    each post in site.posts.find({lang: language}).sort('date', -1).data
+      .section(data-anchor=post.slug, id="#{post.slug}-section")
+        .slide
+          +post-summary(post)
+        if !_.isEmpty(post.hreflang)
+          each hreflang, index in post.hreflang
+            .slide(data-anchor=index)
+              +post-summary(site.posts.find({slug: hreflang}).data[0], post)

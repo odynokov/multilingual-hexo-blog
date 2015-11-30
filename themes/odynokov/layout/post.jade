@@ -1,0 +1,26 @@
+- var language = __('site.language')
+
+.post
+	h1= page.title
+	h2= page.subtitle
+	
+	if page.date
+		p.post__date= moment(page.date).locale(page.lang).fromNow()
+	
+	if toc(page.content).length
+		.toc
+			h2= __('site.toc_title')
+			!= toc(page.content, {list_number: false})
+		
+	p!= page.content
+	
+	if page.categories
+		p.post__category Категория:&nbsp;
+			each category in page.categories.data
+				a(href=url_for(category.path))= category.name
+
+	if page.tags
+		p.post__tags Метки:&nbsp;
+			each tag in page.tags.data
+				- console.log('tag.path', tag.slug)
+				a(href=url_for(tag.path))= tag.name

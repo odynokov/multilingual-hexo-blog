@@ -1,0 +1,17 @@
+- var language = __('site.language')
+
+mixin post-summary(post, origin_post)
+  - var origin_post = origin_post || post
+  .post-summary
+    .post-summary__info
+      h1
+        a(href=url_for(post.path), title=post.title)= post.title
+      h2= post.subtitle
+      p= description
+    
+    if post.hreflang && origin_post
+      p.post-summary__language-versions
+        each hreflang, index in post.hreflang
+          a.post-summary__language(
+            id="#{post.slug}/#{index}",
+            href=index == language ? "##{origin_post.slug}" : "##{origin_post.slug}/#{index}")= site.data.languages.versions[index]

@@ -1,0 +1,6 @@
+h1 tag
+
+ul
+	each post in page.posts.data
+		li
+			a(href=url_for(post.path))= post.title

@@ -1,0 +1,14 @@
+
+include includes/mixins
+
+
+include includes/head
+
+body
+  include includes/sidebar
+  
+  main
+    +language-switcher
+    != body
+  
+  include includes/scripts

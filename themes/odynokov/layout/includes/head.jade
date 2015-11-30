@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    - var title = page.title
+    
+    if title
+      title #{title} | #{config.title}
+      
+    != css('stylesheets/jquery.fullPage')
+    != css('stylesheets/index')

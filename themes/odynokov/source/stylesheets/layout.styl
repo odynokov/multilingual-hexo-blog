@@ -1,0 +1,57 @@
+
+body *
+  box-sizing border-box
+
+main
+  margin-left 30%
+  background-color green
+
+  a
+    color yellow
+
+    &:hover
+      color white
+
+.section
+  text-align center
+
+.sidebar
+  position fixed
+  background-color grey
+  width 30%
+  overflow-y auto
+  height 100%
+  padding 1rem .5rem
+
+  &__post-title
+    line-height 1.5
+
+  &__post-title,
+  &__language-version
+    color white
+
+    &:focus,
+    &:active
+      outline none
+
+    &:target
+      color blue
+
+  &__language-version
+    &:not(:last-child)
+      margin-right .5rem
+
+    &:first-child
+      margin-left .5rem
+
+.language-switcher
+  text-align right
+  padding 1rem
+  position fixed
+  right 0
+  z-index 1
+
+  &__language
+    padding .1rem 1rem
+    &:not(:last-child)
+      border-right 1px solid currentcolor
